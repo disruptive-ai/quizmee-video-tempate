@@ -1,20 +1,20 @@
 import {Composition} from 'remotion';
-import {HelloWorld} from './HelloWorld';
-import {Logo} from './HelloWorld/Logo';
-import {Things} from './Things';
+import {Intro} from './Intro';
+import {Logo} from './Intro/Logo';
+import {GuessTheWordQuiz} from './GuessTheWordQuiz';
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
-        id="HelloWorld"
-        component={HelloWorld}
+        id="Intro"
+        component={Intro}
         durationInFrames={150}
         fps={30}
         width={1920}
         height={1080}
         defaultProps={{
-          titleText: 'Welcome to Remotion',
+          titleText: 'Welcome to the Intro',
           titleColor: 'black',
         }}
       />
@@ -27,9 +27,9 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Composition
-        id="Things"
-        component={Things}
-        durationInFrames={150}
+        id="Guess-the-Word"
+        component={GuessTheWordQuiz}
+        durationInFrames={10 * 240}
         fps={30}
         width={1920}
         height={1080}

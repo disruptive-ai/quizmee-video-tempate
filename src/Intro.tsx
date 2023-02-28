@@ -6,11 +6,11 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {Logo} from './HelloWorld/Logo';
-import {Subtitle} from './HelloWorld/Subtitle';
-import {Title} from './HelloWorld/Title';
+import {Logo} from './Intro/Logo';
+import {Theme} from './Intro/Theme';
+import {Title} from './Intro/Title';
 
-export const HelloWorld: React.FC<{
+export const Intro: React.FC<{
 	titleText: string;
 	titleColor: string;
 }> = ({titleText, titleColor}) => {
@@ -55,9 +55,9 @@ export const HelloWorld: React.FC<{
 				<Sequence from={35}>
 					<Title titleText={titleText} titleColor={titleColor} />
 				</Sequence>
-				{/* The subtitle will only enter on the 75th frame. */}
+				{/* The theme will only enter on the 75th frame. */}
 				<Sequence from={75}>
-					<Subtitle />
+					<Theme />
 				</Sequence>
 			</AbsoluteFill>
 		</AbsoluteFill>
