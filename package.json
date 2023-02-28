@@ -1,7 +1,7 @@
 {
-	"name": "remotion-template",
+	"name": "quizmee_video_template",
 	"version": "1.0.0",
-	"description": "My Remotion video",
+	"description": "A video template to render quiz items programatically",
 	"scripts": {
 		"start": "remotion preview",
 		"build": "remotion render Intro out/video.mp4",
@@ -9,7 +9,7 @@
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},
 	"repository": {},
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"dependencies": {
 		"@remotion/cli": "3.3.58",
 		"@remotion/media-utils": "^3.3.58",
