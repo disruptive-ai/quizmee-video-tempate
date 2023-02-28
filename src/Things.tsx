@@ -1,12 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
 	AbsoluteFill,
-	interpolate,
-	Sequence,
-	useCurrentFrame,
-	useVideoConfig,
-  Series
+  Series,
+  OffthreadVideo
 } from 'remotion';
+import { getVideoMetadata } from "@remotion/media-utils";
+import { getAudioDurationInSeconds } from "@remotion/media-utils";
+
+// GET AUDIO DURATION
+// const MyComp: React.FC = () => {
+//   const getDuration = useCallback(async () => {
+//     const remote = await getAudioDurationInSeconds(
+//       "https://cdn.shotstack.io/au/stage/drluynwhea/adba85a1-e676-45b9-ae26-16820b79baea.mp3"
+//     ); // 50.24
+//   }, []);
+
+//   useEffect(() => {
+//     getDuration();
+//   }, []);
+
+//   return null;
+// };
 
 type Thing = {
   text: string;
@@ -41,10 +55,17 @@ export const Things: React.FC = () => {
       <Series.Sequence durationInFrames={40}>
         {jsonData[0].text}
       </Series.Sequence>
-      <Series.Sequence durationInFrames={20}>
+      <Series.Sequence durationInFrames={100}>
+        <AbsoluteFill>
+          <OffthreadVideo src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
+        </AbsoluteFill>
+      </Series.Sequence>
+      
+      <Series.Sequence durationInFrames={getDuration()}>
       {jsonData[1].text}
       </Series.Sequence>
-      </Series>
+    </Series>
+      
     
 
 
