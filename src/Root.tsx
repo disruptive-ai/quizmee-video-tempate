@@ -16,6 +16,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           titleText: 'Welcome to the Intro',
           titleColor: 'black',
+          titlePosition: 25
         }}
       />
       <Composition
