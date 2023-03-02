@@ -38,6 +38,25 @@ const imageStyle = {
 export const Things: React.FC = () => {
   const [jsonData, setJsonData] = useState<Thing[] | null>(null);
   const [bgDuration, setDuration] = useState<number | null>(null);
+  const [thingsDuration, setThingsDuration] = useState(0);
+
+  useEffect(() => {
+    async function getThingsDuration() {
+      let thingsDuration = 0;
+      quiz.things.forEach(async (thing) => {
+        const numberTransition = 60 / 30;
+        const revealDuration = 240 / 30;
+        const crazyFactDuration = (Math.ceil(thing.length + 2) * 30) / 30;
+        thingsDuration += numberTransition + revealDuration + crazyFactDuration;
+        console.log(thingsDuration);
+        setThingsDuration(thingsDuration);
+      }); 
+    }
+    getThingsDuration();
+    console.log('thingsDuration is ' + thingsDuration * 30);
+    
+  }, []);
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -55,7 +74,7 @@ export const Things: React.FC = () => {
 
   }, []);
 
-  if (!jsonData || !bgDuration) {
+  if (!jsonData || !bgDuration || !thingsDuration) {
     return null; // or display a loading spinner
   }
 
@@ -80,7 +99,7 @@ export const Things: React.FC = () => {
           <Series.Sequence durationInFrames={240}>
             <OffthreadVideo src={thing.revealClip} />
           </Series.Sequence>
-          <Series.Sequence durationInFrames={Math.ceil(thing.length)*30}>
+          <Series.Sequence durationInFrames={Math.ceil(thing.length+2)*30}>
             <AbsoluteFill style={{backgroundColor: `${quiz.contrastColor}`}}>
               <div style={imageContainer}>
                   <Img style={imageStyle} src={thing.image} />
@@ -100,7 +119,6 @@ export const Things: React.FC = () => {
         </Series.Sequence>
       ))} */}
     </Series>
+    
   );
-  
-  
 };
