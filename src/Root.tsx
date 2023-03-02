@@ -15,7 +15,7 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
         defaultProps={{
           titleText: 'Welcome to the Intro',
-          titleColor: 'black',
+          titleColor: 'white',
           titlePosition: 25
         }}
       />

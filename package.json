@@ -12,7 +12,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@remotion/cli": "3.3.59",
-		"@remotion/media-utils": "3.3.59",
+		"@remotion/media-utils": "^3.3.59",
 		"@remotion/player": "3.3.59",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",

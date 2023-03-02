@@ -10,7 +10,6 @@ const numberTransition: React.CSSProperties = {
   fontFamily: OPENDYSLEXIC,
   fontSize: "24vmin",
   textAlign: "center",
-  width: "100%",
   color: "white",
   display: "flex",
   alignItems: "center",

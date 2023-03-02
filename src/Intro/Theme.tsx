@@ -13,9 +13,9 @@ const introTheme: React.CSSProperties = {
 	position: "absolute",
 	bottom: 160,
   width: "100%",
-  color: "firebrick",
+  color: "#00796B",
   textTransform: "uppercase",
-  textShadow: "-4px 4px 0px #000",
+  textShadow: "-4px 4px 0px #424242",
 };
 
 export const Theme: React.FC<ThemeProps> = ({ theme }) => {
