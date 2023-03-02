@@ -1,11 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { Series, Sequence } from "remotion";
-import { Intro } from './Intro';
+import { Series, Sequence, AbsoluteFill, FolderContext } from "remotion";
+import { Theme } from './Intro/Theme';
+import {Title} from './Intro/Title';
+import { IntroTitle } from './Intro/IntroTitle';
+import {RandomLetters} from './RandomLetters';
+import { NumberTransition } from './NumberTransition';
+import { quiz } from './quiz';
+import ImageGrid from './ImageGrid';
+import { Img } from "remotion";
+
 
 type Thing = {
   text: string;
   color: string;
 };
+
+const imageContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  height: '500px',
+  objectFit: 'contain',
+  marginTop: '5%'
+
+}
+
+const imageStyle = {
+  display: 'flex',
+  width: '500px',
+  height: 'auto',
+  borderRadius: '50px',
+  border: '20px solid #fff',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25), 0 6px 8px rgba(0, 0, 0, 0.3)'
+}
+
 
 export const GuessTheWordQuiz: React.FC = () => {
   const [jsonData, setJsonData] = useState<Thing[] | null>(null);
@@ -26,18 +54,42 @@ export const GuessTheWordQuiz: React.FC = () => {
 
   return (
     <Series>
+      {/* <Series.Sequence name='Grid' durationInFrames={200}>
+        <ImageGrid />
+      </Series.Sequence> */}
       <Series.Sequence name='Intro' durationInFrames={100}>
-        INTRO GOES HERE
-        {/* <Intro /> */}
+        <AbsoluteFill style={{backgroundColor: `${quiz.bgColor}`}}>
+          <IntroTitle title={quiz.quizType}/>
+          <Sequence from={50}>
+            <Theme theme={quiz.theme}/>
+          </Sequence>
+        </AbsoluteFill>
       </Series.Sequence>
-      {jsonData.map((thing, index) => (
-        <Series.Sequence key={index} durationInFrames={240} name={thing.text}>
+      {/* <Series.Sequence name='RandomLetters' durationInFrames={200}>
+        <RandomLetters />
+      </Series.Sequence> */}
+      {quiz.things.map((thing, index) => (
+        <React.Fragment key={index}>
+          <Series.Sequence durationInFrames={60}>
+            <NumberTransition number={index+1}/>
+          </Series.Sequence>
+          <Series.Sequence durationInFrames={240}>
+            <div style={imageContainer}>
+              <Img style={imageStyle} src={thing.image} />
+            </div>
+            
+            <Title titleText={thing.name} />
+          </Series.Sequence>
+        </React.Fragment>
+      ))}
+
+      {/* {jsonData.map((quiz, index) => (
+        <Series.Sequence key={index} durationInFrames={240} name={quiz.title}>
           <div>
-            <h1>{thing.text}</h1>
-            <p>{thing.color}</p>
+            <Title titleText={thing.text} titleColor='black'/>
           </div>
         </Series.Sequence>
-      ))}
+      ))} */}
     </Series>
   );
   

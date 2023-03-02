@@ -1,26 +1,25 @@
 import React from 'react';
-import {interpolate, useCurrentFrame} from 'remotion';
-import {COLOR_1, FONT_FAMILY} from './constants';
+import { MORESUGAR } from './constants';
+import { IntroTitle } from './IntroTitle';
 
-const theme: React.CSSProperties = {
-	fontFamily: FONT_FAMILY,
-	fontSize: 40,
-	textAlign: 'center',
-	position: 'absolute',
-	bottom: 140,
-	width: '100%',
+interface ThemeProps {
+  theme: string;
+}
+
+const introTheme: React.CSSProperties = {
+  fontFamily: MORESUGAR,
+  fontSize: "14vmin",
+  textAlign: "center",
+	position: "absolute",
+	bottom: 160,
+  width: "100%",
+  color: "firebrick",
+  textTransform: "uppercase",
+  textShadow: "-4px 4px 0px #000",
 };
 
-const codeStyle: React.CSSProperties = {
-	color: COLOR_1,
-};
-
-export const Theme: React.FC = () => {
-	const frame = useCurrentFrame();
-	const opacity = interpolate(frame, [0, 30], [0, 1]);
-	return (
-		<div style={{...theme, opacity}}>
-			<code style={codeStyle}>Theme</code>
-		</div>
-	);
+export const Theme: React.FC<ThemeProps> = ({ theme }) => {
+  return (
+    <h1 style={introTheme}>{theme}</h1>
+  );
 };

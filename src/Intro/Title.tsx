@@ -1,10 +1,10 @@
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {FONT_FAMILY} from './constants';
+import { OPENDYSLEXIC, MORESUGAR } from './constants';
 
 const title: React.CSSProperties = {
-	fontFamily: FONT_FAMILY,
-	fontWeight: 'bold',
+	fontFamily: OPENDYSLEXIC,
+	// fontWeight: 'bold',
 	fontSize: 100,
 	textAlign: 'center',
 	position: 'absolute',

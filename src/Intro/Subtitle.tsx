@@ -1,9 +1,9 @@
 import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
-import {COLOR_1, FONT_FAMILY} from './constants';
+import {COLOR_1, OPENDYSLEXIC } from './constants';
 
 const subtitle: React.CSSProperties = {
-	fontFamily: FONT_FAMILY,
+	fontFamily: OPENDYSLEXIC,
 	fontSize: 40,
 	textAlign: 'center',
 	position: 'absolute',

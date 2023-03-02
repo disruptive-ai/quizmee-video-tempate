@@ -6,14 +6,15 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {Logo} from './Intro/Logo';
+import { IntroTitle } from './Intro/IntroTitle';
 import {Theme} from './Intro/Theme';
-import {Title} from './Intro/Title';
+import {quiz} from './quiz'
 
 export const Intro: React.FC<{
 	titleText: string;
 	titleColor: string;
-}> = ({titleText, titleColor}) => {
+	titlePosition: number;
+}> = ({titleText, titleColor, titlePosition}) => {
 	const frame = useCurrentFrame();
 	const {durationInFrames, fps} = useVideoConfig();
 
@@ -44,20 +45,15 @@ export const Intro: React.FC<{
 		}
 	);
 
-	// A <AbsoluteFill> is just a absolutely positioned <div>!
+	// A <AbsoluteFill> is just an absolutely positioned <div>!
 	return (
 		<AbsoluteFill style={{backgroundColor: 'white'}}>
 			<AbsoluteFill style={{opacity}}>
-				<AbsoluteFill style={{transform: `translateY(${logoTranslation}px)`}}>
-					<Logo />
-				</AbsoluteFill>
-				{/* Sequences can shift the time for its children! */}
-				<Sequence from={35}>
-					<Title titleText={titleText} titleColor={titleColor} />
+				<Sequence>
+					<IntroTitle title={quiz.title}/>
 				</Sequence>
-				{/* The theme will only enter on the 75th frame. */}
-				<Sequence from={75}>
-					<Theme />
+				<Sequence>
+					<Theme theme={quiz.theme}/>
 				</Sequence>
 			</AbsoluteFill>
 		</AbsoluteFill>
