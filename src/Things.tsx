@@ -132,6 +132,19 @@ export const Things: React.FC = () => {
         </React.Fragment>
       ))}
 
+      <Series.Sequence name='Outro' durationInFrames={Math.ceil(quiz.outroLength*30)}>
+        <AbsoluteFill style={{backgroundColor: `${quiz.bgColor}`}}>
+        <Audio src={quiz.outroAudioLink} volume={1} />
+        <Sequence from={0}>
+          <IntroTitle title="See you next time!"/>
+        </Sequence>
+        <Sequence from={90}>
+          <Theme theme="Don't forget to share!"/>
+        </Sequence>
+          
+        </AbsoluteFill>
+      </Series.Sequence>
+
       {/* {jsonData.map((quiz, index) => (
         <Series.Sequence key={index} durationInFrames={240} name={quiz.title}>
           <div>
