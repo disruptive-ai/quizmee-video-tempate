@@ -1,24 +1,33 @@
 import React from 'react';
-import { AbsoluteFill } from 'remotion';
 import { OPENDYSLEXIC } from './Intro/constants';
+import { spring, useCurrentFrame, useVideoConfig } from "remotion"; // needed for spring animations
 
-interface NumberTransitionProps {
+interface numberTransitionProps {
   number: number;
 }
 
-const numberTransition: React.CSSProperties = {
-  fontFamily: OPENDYSLEXIC,
-  fontSize: "24vmin",
-  textAlign: "center",
-  color: "white",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  textShadow: "4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000",
-};
+export const NumberTransition: React.FC<numberTransitionProps> = ({ number }) => {
+  // SPRING ANIMATION
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+ 
+  const scale = spring({
+    fps,
+    frame,
+  });
+  // END SPRING
 
-export const NumberTransition: React.FC<NumberTransitionProps> = ({ number }) => {
   return (
-      <h1 style={numberTransition}>{number}</h1>
+    <h1 style={{ 
+      transform: `scale(${scale})`,
+      fontFamily: OPENDYSLEXIC,
+      fontSize: "300px",
+      textAlign: "center",
+      color: "white",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      textShadow: "8px 8px #424242",
+      WebkitTextStroke: "5px black" }}>{number}</h1>
   );
 };

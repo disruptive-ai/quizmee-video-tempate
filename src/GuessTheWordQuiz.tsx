@@ -32,11 +32,13 @@ export const GuessTheWordQuiz: React.FC = () => {
   return (
     <>
       <Sequence from={0}>
-        LENGTH OF INTRO + THINGS + OUTRO
-        <Audio src={quiz.bgAudio} volume={0.4} />
-      </Sequence><Sequence from={0}>
-          <Things />
+            <Things />
       </Sequence>
+      <Sequence name="BG Track" from={0}>
+        <Audio src={quiz.bgAudio} volume={0.4} />
+      </Sequence>
+      
+      
     </>
   );
   

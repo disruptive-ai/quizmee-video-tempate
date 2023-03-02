@@ -9,6 +9,8 @@ import { quiz } from './quiz';
 import ImageGrid from './ImageGrid';
 import { Img } from "remotion";
 import { getAudioDurationInSeconds } from "@remotion/media-utils";
+import { OPENDYSLEXIC } from './Intro/constants';
+import { spring, useCurrentFrame, useVideoConfig } from "remotion"; // needed for spring animations
 
 
 type Thing = {
@@ -20,22 +22,39 @@ const imageContainer = {
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
-  height: '500px',
-  objectFit: 'contain',
-  marginTop: '5%'
-
+  marginTop: '10%'
 }
 
 const imageStyle = {
   display: 'flex',
-  width: '500px',
   height: 'auto',
   borderRadius: '50px',
   border: '20px solid #fff',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25), 0 6px 8px rgba(0, 0, 0, 0.3)'
 }
 
+const numberStyle = {
+  fontFamily: OPENDYSLEXIC,
+  fontSize: "300px",
+  color: "white",
+  textShadow: "8px 8px #424242",
+  WebkitTextStroke: "5px black",
+  justifyContent: "center",
+  alignItems: "center",
+  display: "flex"
+}
+
 export const Things: React.FC = () => {
+  // SPRING ANIMATION
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+   
+  const scale = spring({
+    fps,
+    frame,
+  });
+  // END SPRING
+
   const [jsonData, setJsonData] = useState<Thing[] | null>(null);
   const [bgDuration, setDuration] = useState<number | null>(null);
   const [thingsDuration, setThingsDuration] = useState(0);
@@ -53,7 +72,7 @@ export const Things: React.FC = () => {
       }); 
     }
     getThingsDuration();
-    console.log('thingsDuration is ' + thingsDuration * 30);
+    console.log('thingsDuration is ' + (thingsDuration * 30));
     
   }, []);
   
@@ -89,17 +108,19 @@ export const Things: React.FC = () => {
           </Sequence>
         </AbsoluteFill>
       </Series.Sequence>
+
       {quiz.things.map((thing, index) => (
         <React.Fragment key={index}>
-          <Series.Sequence durationInFrames={60}>
+          <Series.Sequence name={(index+1).toString()} durationInFrames={60}>
           <AbsoluteFill style={{backgroundColor: `${quiz.bgColor}`}}>
-            <NumberTransition number={index+1}/>
+          <NumberTransition number={index+1}/>
           </AbsoluteFill>
           </Series.Sequence>
-          <Series.Sequence durationInFrames={240}>
+          <Series.Sequence name="Reveal Clip" durationInFrames={240}>
             <OffthreadVideo src={thing.revealClip} />
           </Series.Sequence>
-          <Series.Sequence durationInFrames={Math.ceil(thing.length+2)*30}>
+
+          <Series.Sequence name="Crazy Fact" durationInFrames={Math.ceil(thing.length+2)*30}>
             <AbsoluteFill style={{backgroundColor: `${quiz.contrastColor}`}}>
               <div style={imageContainer}>
                   <Img style={imageStyle} src={thing.image} />
