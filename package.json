@@ -4,7 +4,7 @@
 	"description": "A video template to render quiz items programatically",
 	"scripts": {
 		"start": "remotion preview",
-		"build": "remotion render Intro out/video.mp4",
+		"build": "remotion render Guess-the-Word out/video.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},
@@ -12,7 +12,8 @@
 	"license": "MIT",
 	"dependencies": {
 		"@remotion/cli": "3.3.59",
-		"@remotion/media-utils": "^3.3.59",
+		"@remotion/lambda": "^3.3.59",
+		"@remotion/media-utils": "3.3.59",
 		"@remotion/player": "3.3.59",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
