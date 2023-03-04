@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface CaptionProps {
+interface PortraitCaptionProps {
   currentTime: number;
   word: {
     text: string;
@@ -11,7 +11,7 @@ interface CaptionProps {
   };
 }
 
-function Caption({ currentTime, word }: CaptionProps) {
+function PortraitCaption({ currentTime, word }: PortraitCaptionProps) {
   const isVisible = currentTime >= word.start / 1000 && currentTime <= (word.end / 1000) + 0.5;
 
   const captionStyle = {
@@ -32,4 +32,4 @@ function Caption({ currentTime, word }: CaptionProps) {
   );
 }
 
-export default Caption;
+export default PortraitCaption;

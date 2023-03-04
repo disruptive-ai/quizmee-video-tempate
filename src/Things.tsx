@@ -9,7 +9,7 @@ import { quiz } from './quiz';
 import ImageGrid from './ImageGrid';
 import { Img } from "remotion";
 import { getAudioDurationInSeconds } from "@remotion/media-utils";
-import { OPENDYSLEXIC } from './Intro/constants';
+import { OPENDYSLEXIC, MORESUGAR} from './Intro/constants';
 import { spring, useCurrentFrame, useVideoConfig } from "remotion"; // needed for spring animations
 
 
@@ -42,6 +42,13 @@ const numberStyle = {
   justifyContent: "center",
   alignItems: "center",
   display: "flex"
+}
+
+const outroStyle = {
+  fontFamily: MORESUGAR,
+  position: 'absolute',
+  width: '100%',
+  bottom: '60'
 }
 
 export const Things: React.FC = () => {

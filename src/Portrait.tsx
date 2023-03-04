@@ -1,9 +1,9 @@
 import React from 'react';
 import { AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig, Audio, staticFile } from 'remotion';
 import { words } from './words';
-import Caption from './Caption';
+import PortraitCaption from './PortraitCaptions';
 
-export const Intro: React.FC = () => {
+export const Portrait: React.FC = () => {
   const frame = useCurrentFrame();
   const { durationInFrames, fps } = useVideoConfig();
 	
@@ -17,7 +17,7 @@ export const Intro: React.FC = () => {
           from={Math.ceil(word.start / 1000 * fps)}
           durationInFrames={Math.ceil((word.end - word.start) / 1000 * fps)}
         >
-          <Caption currentTime={frame / fps} word={word} />
+          <PortraitCaption currentTime={frame / fps} word={word} />
         </Sequence>
       ))}
 
