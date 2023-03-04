@@ -22,6 +22,14 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+      <Composition
+        id="Intro"
+        component={Intro}
+        durationInFrames={500}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
         
     </>
   );

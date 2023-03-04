@@ -3,7 +3,6 @@ import { Series, Sequence, AbsoluteFill, Audio } from "remotion";
 import { Theme } from './Intro/Theme';
 import {Title} from './Intro/Title';
 import { IntroTitle } from './Intro/IntroTitle';
-import {RandomLetters} from './RandomLetters';
 import { NumberTransition } from './NumberTransition';
 import { quiz } from './quiz';
 import ImageGrid from './ImageGrid';

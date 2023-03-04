@@ -1,0 +1,16 @@
+.random-letter {
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.random-letter span {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: none; }
+}
