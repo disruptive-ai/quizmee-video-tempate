@@ -14,7 +14,7 @@ interface PortraitCaptionProps {
 function PortraitCaption({ currentTime, word }: PortraitCaptionProps) {
   const isVisible = currentTime >= word.start / 1000 && currentTime <= (word.end / 1000) + 0.5;
 
-  const captionStyle = {
+  const captionStyle: React.CSSProperties = {
     display: isVisible ? 'block' : 'none',
     fontSize: "100px",
     color: "white",

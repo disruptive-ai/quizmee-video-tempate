@@ -3,7 +3,6 @@ import { Series, Sequence, AbsoluteFill, Audio, OffthreadVideo } from "remotion"
 import { Theme } from './Intro/Theme';
 import {Title} from './Intro/Title';
 import { IntroTitle } from './Intro/IntroTitle';
-import {RandomLetters} from './RandomLetters';
 import { NumberTransition } from './NumberTransition';
 import { quiz } from './quiz';
 import ImageGrid from './ImageGrid';
@@ -44,7 +43,7 @@ const numberStyle = {
   display: "flex"
 }
 
-const outroStyle = {
+const outroStyle: React.CSSProperties = {
   fontFamily: MORESUGAR,
   position: 'absolute',
   width: '100%',
@@ -146,7 +145,7 @@ export const Things: React.FC = () => {
           <IntroTitle title="See you next time!"/>
         </Sequence>
         <Sequence from={90}>
-          <Theme theme="Don't forget to share!"/>
+          <Theme style={outroStyle} theme="Don't forget to share!"/>
         </Sequence>
           
         </AbsoluteFill>
