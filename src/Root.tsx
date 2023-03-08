@@ -18,7 +18,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Guess-the-Word"
         component={GuessTheWordQuiz}
-        durationInFrames={introLength + 9930 + outroLength} // INTRO + THINGS + OUTRO, manually set right now
+        durationInFrames={introLength + 8520 + outroLength} // INTRO + THINGS + OUTRO, manually set right now
         fps={30}
         width={1920}
         height={1080}
