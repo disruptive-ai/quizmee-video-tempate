@@ -34,7 +34,7 @@ export const GuessTheWordQuiz: React.FC = () => {
             <Things />
       </Sequence>
       <Sequence name="BG Track" from={0}>
-        <Audio src={quiz.bgAudio} volume={0.4} />
+        <Audio loop src={quiz.bgAudio} volume={0.4} />
       </Sequence>
       
       

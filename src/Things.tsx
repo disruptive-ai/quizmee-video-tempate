@@ -107,7 +107,7 @@ export const Things: React.FC = () => {
     <Series>
       <Series.Sequence name='Intro' durationInFrames={Math.ceil(quiz.introLength*30)}>
         <AbsoluteFill style={{backgroundColor: `${quiz.bgColor}`}}>
-        <Audio src={quiz.introAudioLink} volume={1} />
+        <Audio src={quiz.introAudioLink} volume={1} playbackRate={1.1}/>
           <IntroTitle title={quiz.quizType}/>
           <Sequence from={50}>
             <Theme theme={quiz.theme}/>
